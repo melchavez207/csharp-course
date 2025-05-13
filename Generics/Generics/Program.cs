@@ -1,102 +1,60 @@
-﻿using System;
-
-namespace Generics
+﻿namespace Generics
 {
-    public class GenericList<T> where T : notnull
-    {
-        public T Employee;
+    // Definition: Generics allow us to define a class, method, or interface with a placeholder for any type.
+    // They enable us type safety and reusability.
 
-        public void GenericMethod(T param1, T param2)
-        {
-            Console.WriteLine($"Employee: {Employee}");
-            Console.WriteLine($"Param1: {param1}");
-            Console.WriteLine($"Param2: {param2}");
-        }
-    }
+    // Why use generics ?
+    // - Avoid code duplication
+    // - Catch type errors at compile-time
+    // - We don't sacrifice performance
 
-    public class Employee
-    {
-        public string Name { get; set; }
-        public string Location { get; set; }
+    // Built-in Generic Types in .NET
+    // - List<T>
+    // - Dictionary<TKey, TValue>
+    // - Nullable<T>
+    // - Task<T>
+    // - IEnumerable<T>
+    // - INumber<T> (not common)
 
-        public override string ToString()
-        {
-            return $"{Name} {Location}";
-        }
-    }
-
+    // Common constraints
+    // - class
+    // - struct
+    // - new()
+    // - <BaseClass>
+    // - <Interaface>
+    // - notnull
     public class Program
     {
         public static void Main()
         {
-            var employeeClass = new GenericList<Employee>();
-            var emp1 = new Employee() { Name = "Carlos", Location = "Canada" };
-            var emp2 = new Employee() { Name = "Alberth", Location = "Bolivia" };
-            var emp3 = new Employee() { Name = "Roberto", Location = "Peru" };
+            // var number  = new List<int>(); // list is a generic class
+            var intBox = new Box<int> { Value = 1 };
+            var stringBox = new Box<string> { Value = "Hello" };
 
-            employeeClass.Employee = emp1;
+            var printer = new Printer();
+            int number = 3;
+            printer.PrintItem<int>(number);
+            printer.PrintItem<decimal>(1);
 
-            employeeClass.GenericMethod(emp2, emp3);
+            TestClass testClass = null!;
+            var safeBox = new SafeBox<TestClass>(testClass);
 
-            //var test1 = new Test();
-            //ExampleClass test = null;
-            //var list = new GenericList<ExampleClass>();
-
-            ////list.Add(test1);
-            //list.Add(test);
+            // var test = new Creator<IConfigurable>(); it gives error
+            var test = new Creator<TestClass>();
         }
     }
 
-    // USE: Generics allow us to write type-safe and reusable code.
-    // CONTEXT: C# allow us to define data types at runtime
+    public class TestClass : IConfigurable
+    {
+        public TestClass() { }
+        
+        public TestClass(int param1)
+        {
+        }
 
-    // Open and Closed Generic Types
-    // Open Generic Type: An open generic type is a generic type that does not have its type arguments specified.
-    // Closed Generic Type: A closed generic type, on the other hand, all parameters are specified.
-
-    // 'where': Help us to define contraints. It restricts the kinds of types that may be used as arguments for a type.
-
-    // Contraints: inform the compiler about the capabilities a type argument must have. Without any constraint, the type argument could be any type.
-
-    // 1. struct
-    // 2. class
-    // 3. <base class name>
-    // 4. <interface name>
-    // 5. new()
-
-    //public class GenericList<TType>
-    //{
-    //    public void Add(TType type)
-    //    {
-    //        Console.WriteLine(type.ToString());
-    //    }
-    //}
-
-    //public interface IMyClass
-    //{
-    //}
-
-    //public class Test : IMyClass
-    //{
-    //    public override string ToString()
-    //    {
-    //        return "Hola desde Test";
-    //    }
-    //}
-
-    //public class ExampleClass : IMyClass
-    //{
-    //    public override string ToString()
-    //    {
-    //        return "This is a example";
-    //    }
-    //}
-
-    //public class GenericList<TValue> where TValue : class
-    //{
-    //    public void Add(TValue type)
-    //    {
-    //        Console.WriteLine(type.ToString());
-    //    }
-    //}
+        public void Configure()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
