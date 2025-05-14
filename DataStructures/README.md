@@ -69,4 +69,4 @@ A linked list is a collection of elements (nodes) where each node contains a dat
 A double linked list is a type of linked list where each node contains a reference to both the next and previous nodes in the sequence. This allows for more efficient traversal in both directions.
 Double linked lists are useful for applications where bidirectional traversal is required, such as in a browser's history or a music playlist.
 
-![List](./lists.png=250x250)
+![List](./lists.png)
