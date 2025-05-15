@@ -1,5 +1,6 @@
 ﻿namespace DataStructures
 {
+    // List
     // TODO: Define constraints based on existing unit tests
     // OPTIONAL: Enhance the logic if possible
     public class DynamicArray<T>
@@ -62,7 +63,7 @@
                 _data[i] = _data[i + 1];
             }
 
-            _data[_count - 1] = default;
+            _data[_count - 1] = default!;
             _count--;
         }
 

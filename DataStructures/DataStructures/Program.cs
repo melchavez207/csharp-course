@@ -18,8 +18,6 @@
             {
                 Console.WriteLine(dynamicArray.Get(i));
             }
-
-            var test = new List<string>();
         }
     }
 }

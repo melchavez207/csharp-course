@@ -1,5 +1,3 @@
-using DataStructures;
-
 namespace Test.DataStructures
 {
     // TODO: Enhance tests
