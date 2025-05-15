@@ -381,10 +381,6 @@ FodyWeavers.xsd
 
 # VS Code files for those working on multiple tools
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
 *.code-workspace
 
 # Local History for Visual Studio Code
@@ -413,9 +409,6 @@ FodyWeavers.xsd
 
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
-
-### VisualStudioCode ###
-!.vscode/*.code-snippets
 
 # Local History for Visual Studio Code
 
