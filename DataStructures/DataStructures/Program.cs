@@ -4,19 +4,18 @@
     {
         static void Main()
         {
-            var dynamicArray = new DynamicArray<string>(1);
+            var stack = new CustomStack<int>();
+            stack.Push(1);
+            stack.Push(2);
+            stack.Push(3);
 
-            dynamicArray.Add("Jose");
-            dynamicArray.Add("Cristian");
-            dynamicArray.Add("Sergio");
+            Console.WriteLine($"Top item peek: {stack.Peek()}");
 
-            dynamicArray.InsertAt(1, "Jessica");
+            Console.WriteLine($"Top item pop: {stack.Pop()}");
 
-            Console.WriteLine($"count {dynamicArray.Count}");
-
-            for (int i = 0; i < dynamicArray.Count; i++)
+            while (!stack.IsEmpty())
             {
-                Console.WriteLine(dynamicArray.Get(i));
+                Console.WriteLine(stack.Pop());
             }
         }
     }
