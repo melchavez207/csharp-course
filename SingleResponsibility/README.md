@@ -78,7 +78,7 @@ dotnet add InvoiceApp.Tests reference InvoiceApp
 
 # 4. Install dependencies
 dotnet add InvoiceApp package Microsoft.Extensions.Hosting
-dotnet add package Microsoft.Extensions.DependencyInjection
+dotnet add InvoiceApp package Microsoft.Extensions.DependencyInjection
 
 # 5. Run the app (uses inline sample data)
 
