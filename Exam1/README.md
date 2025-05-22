@@ -2,7 +2,8 @@
 
 ## How to present?
 
-- You need to for the entire project
+- You need to fork the entire project or update your fork
+- Create a new branch named `exam1`
 - You have to solve the exam in `CSharpCourse/Exam1/`
 - Create a new console application here (it can be a single project since we don't need unit testing)
 
