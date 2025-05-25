@@ -1,4 +1,6 @@
-﻿namespace DataStructures
+﻿using System.Threading;
+
+namespace DataStructures
 {
     // LIFO
     public class CustomStack<T>
@@ -56,7 +58,15 @@
         {
             // TODO: Convertir a array
 
-            return default!;
+            var result = new T[_count];
+            var current = _top;
+
+            for (int i = 0; i < _count; i++)
+            {
+                result[i] = current!.Value;
+                current = current.Next;
+            }
+            return result;
         }
     }
 }

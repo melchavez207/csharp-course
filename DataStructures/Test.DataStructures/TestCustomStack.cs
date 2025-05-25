@@ -30,17 +30,21 @@
         }
 
         // TODO: Mejorar
-        [Fact]
-        public void Peek_ShouldReturnTopWithoutRemoving()
+        [Theory]
+        [InlineData('e')]
+        [InlineData('f')]
+        [InlineData('g')]
+        public void Peek_ShouldReturnTopWithoutRemoving(char item)
         {
             var stack = new CustomStack<char>();
             stack.Push('a');
             stack.Push('b');
+            stack.Push(item);
 
             char result = stack.Peek();
 
-            Assert.Equal('b', result);
-            Assert.Equal(2, stack.Count);
+            Assert.Equal(item, result);
+            Assert.Equal(3, stack.Count);
         }
 
         [Fact]
@@ -60,6 +64,9 @@
         public void IsEmpty_StackIsEmptyOnCreation()
         {
             // TODO: Complete test
+            var stack = new CustomStack<int>(); 
+
+            Assert.True(stack.IsEmpty());
         }
 
         [Fact]
@@ -74,6 +81,10 @@
         public void Pop_ShouldThrow_WhenEmpty()
         {
             // TODO: Complete test
+            var stack = new CustomStack<char>();
+
+            Assert.Throws<InvalidOperationException>(() => stack.Pop());
+
         }
 
         [Fact]
@@ -84,7 +95,9 @@
             stack.Push('2');
             stack.Push('3');
 
-            // Assert.Equal(new[] {'3', '2', '1'}, result);
+            var result = stack.ToArray();
+
+            Assert.Equal(new[] {'3', '2', '1'}, result);
         }
     }
 }
