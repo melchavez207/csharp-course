@@ -23,14 +23,19 @@
 
         public void Enqueue(T item)
         {
-            // Add items
-            if (_front == null)
+
+            var newNode = new Node(item);
+
+            if (_back == null)
             {
-                _front = new Node(item);
+                _front = _back = newNode;
+            }
+            else
+            {
+                _back.Next = newNode;
+                _back = newNode;
             }
 
-            var newNode = new Node(item) { Next = _back };
-            _back = newNode;    
             _count++;
         }
 
@@ -61,7 +66,7 @@
             return _front.Value;
         }
 
-        public bool IsEmpty() => true;
+        public bool IsEmpty() => _front == null;
 
         public T[] ToArray()
         {
@@ -73,6 +78,7 @@
                 result[i] = current!.Value;
                 current = current.Next;
             }
+
             return result;
         }
     }
